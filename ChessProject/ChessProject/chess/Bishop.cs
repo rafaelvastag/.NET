@@ -3,13 +3,13 @@ using ChessProject.board;
 
 namespace ChessProject.chess
 {
-    class Tower : Part
+    class Bishop : Part
     {
-        public Tower(Board board, Color color) : base(board, color) { }
+        public Bishop(Board board, Color color) : base(board, color) { }
 
         public override string ToString()
         {
-            return "T";
+            return "B";
         }
     }
 }
