@@ -12,9 +12,9 @@ namespace ChessProject.board
         public int MovimentsDone { get; protected set; }
         public Board Board { get; protected set; }
 
-        public Part(Position position, Color color, Board board)
+        public Part(Board board, Color color)
         {
-            Position = position;
+            Position = null;
             Color = color;
             Board = board;
             MovimentsDone = 0;

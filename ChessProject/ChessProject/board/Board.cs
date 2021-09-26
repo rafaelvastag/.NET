@@ -9,18 +9,24 @@ namespace board
     {
         public int Rows { get; set; }
         public int Columns { get; set; }
-        private Part[,] parts;
+        private Part[,] Parts;
 
         public Board(int rows, int columns)
         {
             Rows = rows;
             Columns = columns;
-            parts = new Part[rows, columns];
+            Parts = new Part[rows, columns];
+        }
+
+        public void addPart(Part p, Position pos)
+        {
+            p.Position = pos;
+            Parts[pos.Row, pos.Column] = p;
         }
 
         public Part Part(int row, int column)
         {
-            return parts[row, column];
+            return Parts[row, column];
         }
     }
 }
