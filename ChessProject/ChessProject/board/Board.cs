@@ -17,5 +17,10 @@ namespace board
             Columns = columns;
             parts = new Part[rows, columns];
         }
+
+        public Part Part(int row, int column)
+        {
+            return parts[row, column];
+        }
     }
 }

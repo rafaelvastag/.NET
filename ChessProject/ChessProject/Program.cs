@@ -10,6 +10,8 @@ namespace ChessProject
             Board board = new Board(8,8);
 
             Console.WriteLine(board.Columns);
+
+            ScreenHandler.PrintBoard(board);
         }
     }
 }
