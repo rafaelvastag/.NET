@@ -14,10 +14,14 @@ namespace ChessProject
             {
                 Board board = new Board(8, 8);
                 board.addPart(new Rook(board, Color.Black), new Position(0, 0));
-                board.addPart(new Rook(board, Color.Black), new Position(1, 9));
+                board.addPart(new Rook(board, Color.Black), new Position(1, 7));
                 board.addPart(new King(board, Color.White), new Position(1, 0));
 
                 ScreenHandler.PrintBoard(board);
+
+                ChessPosition cpos = new ChessPosition('a',1);
+                Console.WriteLine(cpos.ToString());
+                Console.WriteLine(cpos.toPosition());
 
             } catch (BoardException e)
             {
