@@ -8,9 +8,21 @@ namespace Directory
         static void Main(string[] args)
         {
             string path = @"C:\Users\rgvas\HOME";
+            string filePath = @"C:\Users\rgvas\HOME\file1.txt";
 
             try
             {
+
+                Console.WriteLine("Path.DirectorySeparatorChar " + Path.DirectorySeparatorChar);
+                Console.WriteLine("Path.PathSeparator " + Path.PathSeparator);
+                Console.WriteLine("Path.GetDirectoryName " + Path.GetDirectoryName(filePath));
+                Console.WriteLine("Path.GetFileName " + Path.GetFileName(filePath));
+                Console.WriteLine("Path.GetExtension " + Path.GetExtension(filePath));
+                Console.WriteLine("Path.GetFileNameWithoutExtension " + Path.GetFileNameWithoutExtension(filePath));
+                Console.WriteLine("Path.GetFullPath " + Path.GetFullPath(filePath));
+                Console.WriteLine("Path.GetTempPath " + Path.GetTempPath());
+
+
                 DirectoryInfo direc = new DirectoryInfo(path);
                 var folders = direc.EnumerateDirectories();
 
@@ -30,7 +42,7 @@ namespace Directory
                     Console.WriteLine(s);
                 }
 
-                direc.CreateSubdirectory(path + @"\newfolder");
+                // direc.CreateSubdirectory(path + @"\newfolder");
 
             }
             catch (IOException e)
