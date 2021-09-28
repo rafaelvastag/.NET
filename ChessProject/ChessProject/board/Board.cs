@@ -1,5 +1,4 @@
-﻿using ChessProject.board;
-using ChessProject.board.exceptions;
+﻿using board.exceptions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,15 +18,29 @@ namespace board
             Parts = new Part[rows, columns];
         }
 
-        public void addPart(Part p, Position pos)
+        public void AddPart(Part p, Position pos)
         {
-            if (hasPartInPosition(pos))
+            if (HasPartInPosition(pos))
             {
                 throw new BoardException("Position already used!");
             }
 
             p.Position = pos;
             Parts[pos.Row, pos.Column] = p;
+        }
+
+        public Part RemovePart(Position pos)
+        {
+            if (Part(pos) == null)
+            {
+                return null;
+            }
+
+            Part removedPart = Part(pos);
+            removedPart.Position = null;
+            Parts[pos.Row, pos.Column] = null;
+
+            return removedPart;
         }
 
         public Part Part(int row, int column)
@@ -40,21 +53,21 @@ namespace board
             return Parts[pos.Row, pos.Column];
         }
 
-        public bool hasPartInPosition(Position pos)
+        public bool HasPartInPosition(Position pos)
         {
-            validatePosition(pos);
+            ValidatePosition(pos);
             return Part(pos) != null;
         }
 
-        public void validatePosition(Position pos)
+        public void ValidatePosition(Position pos)
         {
-            if (!isPositionValid(pos))
+            if (!IsPositionValid(pos))
             {
                 throw new BoardException("Invalid position!");
             }
         }
 
-        public bool isPositionValid(Position pos)
+        public bool IsPositionValid(Position pos)
         {
             return !(pos.Row < 0 || pos.Row >= Rows || pos.Column < 0 || pos.Column >= Columns);
         }

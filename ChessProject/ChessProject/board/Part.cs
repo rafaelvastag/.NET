@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ChessProject.board
+namespace board
 {
     class Part
     {
@@ -18,6 +18,11 @@ namespace ChessProject.board
             Color = color;
             Board = board;
             MovimentsDone = 0;
+        }
+
+        public void IncreaseMovement()
+        {
+            MovimentsDone++;
         }
     }
 }

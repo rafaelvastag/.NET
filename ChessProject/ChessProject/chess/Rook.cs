@@ -1,5 +1,4 @@
 ﻿using board;
-using ChessProject.board;
 
 namespace ChessProject.chess
 {

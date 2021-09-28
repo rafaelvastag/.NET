@@ -1,5 +1,6 @@
 ﻿using board;
-using ChessProject.board.exceptions;
+using board.exceptions;
+using chess;
 using ChessProject.chess;
 using System;
 
@@ -8,20 +9,26 @@ namespace ChessProject
     class Program
     {
         static void Main(string[] args)
-        {
+        {  
 
             try
             {
-                Board board = new Board(8, 8);
-                board.addPart(new Rook(board, Color.Black), new Position(0, 0));
-                board.addPart(new Rook(board, Color.Black), new Position(1, 7));
-                board.addPart(new King(board, Color.White), new Position(1, 0));
+                ChessGame game = new ChessGame();
 
-                ScreenHandler.PrintBoard(board);
+                while (!game.Finished)
+                {
+                    Console.Clear();
+                    ScreenHandler.PrintBoard(game.Board);
 
-                ChessPosition cpos = new ChessPosition('a',1);
-                Console.WriteLine(cpos.ToString());
-                Console.WriteLine(cpos.toPosition());
+                    Console.WriteLine();
+
+                    Console.Write("Origin: ");
+                    Position origin = ScreenHandler.ChessPosition().toPosition();
+                    Console.Write("Destiny: ");
+                    Position dest = ScreenHandler.ChessPosition().toPosition();
+
+                    game.DoMovement(origin, dest);
+                }
 
             } catch (BoardException e)
             {
