@@ -9,6 +9,7 @@ namespace Files
         {
             string sourcePath = @"C:\Users\rgvas\HOME\file1.txt";
             string targetPath = @"C:\Users\rgvas\HOME\file2.txt";
+            string targetPath2 = @"C:\Users\rgvas\HOME\file3.txt";
             StreamReader sr = null;
 
             try
@@ -30,15 +31,22 @@ namespace Files
                     Console.WriteLine(lineRead);
                 }
 
-                using (FileStream fs2 = new FileStream(sourcePath, FileMode.Open))
+                using (StreamReader sr2 = File.OpenText(sourcePath))
                 {
-                    using (StreamReader sr2 = new StreamReader(fs2))
+                    while (!sr2.EndOfStream)
                     {
-                        while (!sr2.EndOfStream)
-                        {
-                            string lineRead = sr2.ReadLine();
-                            Console.WriteLine(lineRead);
-                        }
+                        string lineRead = sr2.ReadLine();
+                        Console.WriteLine(lineRead);
+                    }
+                }
+
+                string[] linesOfFileRead = File.ReadAllLines(sourcePath);
+
+                using (StreamWriter sw = File.AppendText(targetPath2))
+                {
+                    foreach (string lin in linesOfFileRead)
+                    {
+                        sw.WriteLine(lin.ToUpper());
                     }
                 }
 
