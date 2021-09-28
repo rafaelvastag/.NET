@@ -24,8 +24,11 @@ namespace Files
 
                 sr = File.OpenText(targetPath);
 
-                string lineRead = sr.ReadLine();
-                Console.WriteLine(lineRead);
+                while (!sr.EndOfStream)
+                {
+                    string lineRead = sr.ReadLine();
+                    Console.WriteLine(lineRead);
+                }
 
             }
             catch (IOException e)
