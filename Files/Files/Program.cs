@@ -30,6 +30,18 @@ namespace Files
                     Console.WriteLine(lineRead);
                 }
 
+                using (FileStream fs2 = new FileStream(sourcePath, FileMode.Open))
+                {
+                    using (StreamReader sr2 = new StreamReader(fs2))
+                    {
+                        while (!sr2.EndOfStream)
+                        {
+                            string lineRead = sr2.ReadLine();
+                            Console.WriteLine(lineRead);
+                        }
+                    }
+                }
+
             }
             catch (IOException e)
             {
