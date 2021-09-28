@@ -5,7 +5,7 @@ using System.Text;
 
 namespace board
 {
-    class Part
+    abstract class Part
     {
         public Position Position { get; set; }
         public Color Color { get; protected set; }
@@ -24,5 +24,7 @@ namespace board
         {
             MovimentsDone++;
         }
+
+        public abstract bool[,] AllowedMoves();
     }
 }
